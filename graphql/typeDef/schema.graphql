@@ -1,0 +1,71 @@
+type Query{
+    hotels: [hotel!]
+    hotel(id:Int): hotel
+    amenities:[amenities!]
+    review(id:Int):review
+    tariff(id:Int):tariff
+}
+type Mutation{
+    createHotel(data:hotelInput): hotel
+}
+
+input hotelInput  {
+    id: Int 
+    name: String
+    address: String
+    rating: Float
+    phone: String
+    email: String
+    country: String
+    pincode: String
+    latitude: Float
+    longitude: Float
+    checkIn: String
+    checkOut: String
+    wifi: Boolean
+    roomService: Boolean!
+    laundry: Boolean!
+    locker: Boolean!
+    swimmingPool: Boolean!
+    giftShops: Boolean!
+}
+
+type hotel{
+    id: Int 
+    name: String
+    address: String
+    rating: Float
+    phone: String
+    email: String
+    country: String
+    pincode: String
+    latitude: Float
+    longitude: Float
+    checkIn: String
+    checkOut: String
+    hotelTariff: tariff
+    hotelAmenities: amenities
+    hotelReview: review
+}
+type amenities{
+    id: Int!
+    wifi: Boolean!
+    roomService: Boolean!
+    laundry: Boolean!
+    locker: Boolean!
+    swimmingPool: Boolean!
+    giftShops: Boolean!
+}
+type review{
+    id: Int
+    hotelId: Int
+    reviewer: String
+    rating: Float 
+    comments: String
+}
+type tariff{
+    id: Int
+    hotelId: Int
+    roomType: String
+    tariff: Int
+}
